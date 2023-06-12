@@ -27,7 +27,10 @@ const routes = [
   {
     path: '/cart',
     name: 'cart',
-    component: () => import('../views/cart/index.vue')
+    component: () => import('../views/cart/index.vue'),
+    meta: {
+      hidden: true
+    }
   },
   {
     path: '/sellbook',
