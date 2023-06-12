@@ -1,8 +1,14 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import type { Ref } from "vue";
+import { getHomeList } from "@/api/homeList";
 
-const value1: Ref<string> = ref("");
+const value1 = ref("");
+// onMounted(() => {
+//   // getHomeList().then((res) => {
+//   //   console.log(res.data);
+//   // });
+// });
 </script>
 
 <template>
@@ -19,20 +25,19 @@ const value1: Ref<string> = ref("");
             placeholder="输入你喜欢的书籍"
           />
         </van-cell-group>
-      
       </div>
     </header>
-      <div class="content"> 
-        <van-icon name="chat-o" dot size="45px" color="white" id="van-badge" />
-     
+    <div class="content">
+      <van-icon name="chat-o" dot size="45px" color="white" id="van-badge" />
+
       <!-- 轮播图 -->
       <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
         <van-swipe-item>
-           <img src="" alt="">>
+          <img src="../imgs/28.jpg" alt="" />
         </van-swipe-item>
-        <van-swipe-item></van-swipe-item>
-        <van-swipe-item></van-swipe-item>
-        <van-swipe-item></van-swipe-item>
+        <van-swipe-item>
+          <img src="../imgs/31.jpg" alt="" />
+        </van-swipe-item>
       </van-swipe>
       <div class="bookKind">
         <van-icon size="60px" color="orange" name="hot-sale"></van-icon>
@@ -40,10 +45,17 @@ const value1: Ref<string> = ref("");
         <van-icon size="60px" color="orange" name="map-marked"></van-icon>
         <van-icon size="60px" color="orange" name="bars"></van-icon>
       </div>
-      <div class="bookList">书单推荐</div>
+      <div class="bookList">
+        <p>书单推荐</p>
+        <img src="../imgs/34.jpeg" alt="" />
+      </div>
       <div class="middle">
-        <div class="nearSale">附近在售</div>
-        <div class="hotSearch">热搜榜单</div>
+        <div class="nearSale">
+          <p>附近在售</p>
+        </div>
+        <div class="hotSearch">
+          <p>热搜榜单</p>
+        </div>
       </div>
       <h3>猜你喜欢</h3>
       <van-list
@@ -52,10 +64,10 @@ const value1: Ref<string> = ref("");
         finished-text="没有更多了"
         @load="onLoad"
       >
-        <van-cell v-for="item in 6" :key="item" :title="item" />
+        <van-cell v-for="item in 4" :key="item" :title="item" />
       </van-list>
-        <van-back-top right="5vw" bottom="18vh" />
-      </div>
+      <van-back-top right="5vw" bottom="18vh" />
+    </div>
   </div>
 </template>
 <style lang="scss" scoped>
@@ -78,6 +90,11 @@ const value1: Ref<string> = ref("");
   line-height: 150px;
   text-align: center;
   background-color: #39a9ed;
+  height: 100px;
+  img {
+    height: 100%;
+    width: 100%;
+  }
 }
 #van-badge {
   position: absolute;
@@ -101,6 +118,17 @@ const value1: Ref<string> = ref("");
   border: 2px outset;
   border-radius: 10px;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  img {
+    width: 70%;
+    height: 100%;
+  }
+  p {
+    color: orange;
+    font-size: 20px;
+    font-weight: 30px;
+  }
 }
 .middle {
   height: 105px;
