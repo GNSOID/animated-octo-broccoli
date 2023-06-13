@@ -1,17 +1,25 @@
 <script setup lang="ts">
-
+import { ref,computed } from 'vue'
+import { useRouter} from 'vue-router'
+const router = useRouter()
+const phoneNum: any = ref('')
+const btnShow = computed(() =>{
+  
+  return !/^(?:(?:\+|00)86)?1\d{10}$/.test(phoneNum.value)
+  
+}) 
 </script>
 
 <template>
+  <!-- <img src="../imgs/bg.jpg" alt=""> -->
   <div>
     <header class="header">注册</header>
-
 <div class="content">
 
     <van-form @submit="onSubmit">
   <van-cell-group inset>
     <van-field
-      v-model="username"
+      v-model="phoneNum"
       name="请输入手机号"
       label="请输入手机号"
       placeholder="请输入手机号"
@@ -20,7 +28,13 @@
   </van-cell-group>
   <!-- 下一步 -->
   <div style="margin: 16px;">
-    <van-button round block type="primary" native-type="submit">
+    <van-button 
+    @click="$router.push('step2')"
+    round block 
+    type="primary" 
+    native-type="submit"
+    :disabled="btnShow"
+    >
       下一步
     </van-button>
   </div>
@@ -29,7 +43,7 @@
 </div>
 
     <!-- <span>已有账号？</span> <span class="dl">去登陆</span> -->
-    <div class="tip">已有账号？<span class="dl">去登陆</span></div>
+    <div class="tip">已有账号？<span class="dl" @click="$router.push('/login')">去登陆</span></div>
   </div>
   
 </template>
@@ -37,8 +51,8 @@
 
 
 <style lang="scss" scoped>
-.header{
 
+.header{
     margin-top: 10px;
     margin-left: 10px;
     font-size: 30px;

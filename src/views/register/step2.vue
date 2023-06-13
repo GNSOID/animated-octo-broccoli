@@ -1,5 +1,33 @@
 <script setup lang="ts">
+import {ref,computed,Ref} from 'vue'
+import { useRouter} from 'vue-router'
+//test(sms.value)
+const router = useRouter()
+const sms: Ref<string> = ref('')
 
+const btnShow = computed(() =>{
+    return !/^\d{5,}$/.test(sms.value)
+})
+const btnTime: Ref<number> = ref(5)
+const btnText: Ref<string> = ref('发送验证码')
+
+function getsms () {
+    btnTime.value--
+    btnText.value = `${btnTime.value}秒后重新获取`
+
+    let timeid = setInterval(() =>{
+    btnTime.value--
+    btnText.value = `${btnTime.value}秒后重新获取`
+
+    if(btnTime.value === 0) {
+      clearInterval(timeid)
+      btnText.value = '发送验证码'
+      btnTime.value = 5
+    }
+    },1000)
+
+    
+}
 </script>
 
 <template>
@@ -9,7 +37,7 @@
 
     <van-form @submit="onSubmit">
         <van-cell-group inset>
-  <van-field
+      <van-field
             v-model="sms"
             center
             clearable
@@ -17,13 +45,29 @@
             placeholder="请输入短信验证码"
                 >
             <template #button>
-            <van-button size="small" type="primary">发送验证码</van-button>
+
+            <van-button 
+            @click="getsms"
+            size="small" 
+            type="primary"
+            :disabled="btnTime !== 5"
+            >
+            {{btnText}}
+          </van-button>
             </template>
         </van-field>
         </van-cell-group>
   <!-- 下一步 -->
   <div style="margin: 16px;">
-    <van-button round block type="primary" native-type="submit" class="btn">
+    <van-button 
+    v-model="sms"
+    round block 
+    type="primary" 
+    native-type="submit" 
+    class="btn"
+    :disabled="btnShow"
+    @click="$router.push('/register/step3')"
+    >
       下一步
     </van-button>
   </div>

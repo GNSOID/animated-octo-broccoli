@@ -16,11 +16,11 @@ import { RouterLink, RouterView } from 'vue-router'
                 <span class="iconfont icon-fenlei"></span>
                 <p>卖书</p>           
         </RouterLink>
-          <RouterLink to="/cart" >
+          <RouterLink to="/cart/firstcart" >
                 <span class="iconfont icon-gouwuche"></span>
                 <p>购物车</p>           
         </RouterLink>
-          <RouterLink to="/my" >
+          <RouterLink to="/my/mymessage" >
                 <span class="iconfont icon-My"></span>
                 <p>个人页</p>             
         </RouterLink>
