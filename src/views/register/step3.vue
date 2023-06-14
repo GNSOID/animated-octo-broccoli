@@ -2,8 +2,14 @@
 import {ref,computed,Ref} from 'vue'
 import { useRouter} from 'vue-router'
 const router = useRouter()
-const password:any = ref('')
-const rpassword:any = ref('')
+const password = ref('')
+const rpassword = ref('')
+
+function success() {
+  window.localStorage.setItem('dl',password.value)
+  router.push('/login')
+
+}
 const btnShow = computed(() =>{
   if(password.value === rpassword.value && password.value !== '' ){
     return false
@@ -17,7 +23,7 @@ const btnShow = computed(() =>{
   <div>
   <h1>注册</h1>
 <div class="content">
-    <van-form @submit="onSubmit">
+    <van-form>
       <van-field
       v-model="password"
       name="密码"
@@ -39,7 +45,7 @@ const btnShow = computed(() =>{
     round block 
     type="primary" 
     native-type="submit"
-    @click="$router.push('/login')"
+    @click="success"
     >
       同意并注册
     </van-button>

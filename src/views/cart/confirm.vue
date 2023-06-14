@@ -18,11 +18,11 @@ interface cartItem {
 <template>
   <div class="content">
     <header class="headers">
-    <van-icon name="arrow-left" @click="$router.push('/cart/cart')"/>
+      <van-icon name="arrow-left" size="30" @click="$router.back()" />
          <span style="margin-left: 1rem;">确认下单</span> 
     </header>
     <div class="box">
-      <button>
+      <button @click="$router.push('/my/addmap')">
         <p>
           张三&nbsp;178-666-8888<br />
           广东省-广州市-天河区&nbsp;天河路888号<br/>
@@ -33,18 +33,16 @@ interface cartItem {
       <div class="rz">学生认证</div>
     </div>
     <div class="sp">
-      <van-image width="100" height="100"
-        src="https://img2.xinhuashudian.com/images/2020/05/29/c49edb0a-ff4d-4416-80e9-91b476160247.jpg?x-oss-process=image/resize,m_mfit,h_750,w_750"/>
+      <img src="../imgs/25.jpg" alt="" style="width: 100px; height: 100px; margin-left: 100px;">
       <div class="s">
-        <p>你好,钟南山&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <p style="margin-left: 50px;">9成新</p>
-        <p style="margin-left: 50px;">数量：x1</p>
+        <p>一只特立独行的猪</p>
+        <p style="margin-left: 50px;">七折优惠</p>
     </div>
     <div style="margin-top: 0.5rem;">
       <p>配送方式:自提 <span style="margin-left: 100px;">运费:￥0.00</span>
       </p>
       <hr>
-      <p>共计1件商品&nbsp;&nbsp;&nbsp;&nbsp;小计:￥10.00</p></div>
+      <p>共计1件商品&nbsp;&nbsp;&nbsp;&nbsp;小计:￥16.00</p></div>
     
     <div class="zf">
       <div class="zf1" style="display: flex; margin-top: 1.5rem;">支付方式: <span

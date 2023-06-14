@@ -1,20 +1,26 @@
 <script setup lang="ts">
-import {ref,computed,Ref} from 'vue'
+import {ref,computed,onMounted} from 'vue'
 import { useRouter} from 'vue-router'
+import { getUserSms } from '../../api/sms.js'
+import { showSuccessToast, showFailToast } from 'vant';
+
+
 //test(sms.value)
 const router = useRouter()
-const sms: Ref<string> = ref('')
 
+const sms = ref('')
+const nums = ref('')
 const btnShow = computed(() =>{
     return !/^\d{5,}$/.test(sms.value)
 })
-const btnTime: Ref<number> = ref(5)
-const btnText: Ref<string> = ref('发送验证码')
+const btnTime = ref(5)
+const btnText = ref('发送验证码')
 
-function getsms () {
+  function getsms () {
     btnTime.value--
     btnText.value = `${btnTime.value}秒后重新获取`
 
+  
     let timeid = setInterval(() =>{
     btnTime.value--
     btnText.value = `${btnTime.value}秒后重新获取`
@@ -26,8 +32,26 @@ function getsms () {
     }
     },1000)
 
-    
+    getUserSms().then(res => {
+      // console.log(res.data);
+      nums.value = res.data.number
+      console.log(nums.value);
+      
+    })
 }
+function nextStep () {
+ console.log(sms.value);
+ if (Number(sms.value) !== Number(nums.value)){
+   
+   return showFailToast('验证码错误!');
+  }else{
+    showSuccessToast('进行下一步');
+
+    router.push('step3')
+  }
+}
+
+
 </script>
 
 <template>
@@ -35,7 +59,7 @@ function getsms () {
 <h1>验证码</h1>
 <div class="content">
 
-    <van-form @submit="onSubmit">
+    <van-form >
         <van-cell-group inset>
       <van-field
             v-model="sms"
@@ -66,7 +90,7 @@ function getsms () {
     native-type="submit" 
     class="btn"
     :disabled="btnShow"
-    @click="$router.push('/register/step3')"
+    @click="nextStep"
     >
       下一步
     </van-button>

@@ -67,9 +67,11 @@ onMounted(() => {
       <div class="middle">
         <div class="nearSale">
           <p>附近在售</p>
+          <img src="../imgs/29.jpg" alt="" style="width: 100%; height: 50px;">
         </div>
         <div @click="$router.push('/bigkind/search')" class="hotSearch">
           <p>热搜榜单</p>
+          <img src="../imgs/28.jpg" alt="" style="width: 100%; height: 50px;">
         </div>
       </div>
       <h3>猜你喜欢</h3>

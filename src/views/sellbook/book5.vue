@@ -17,25 +17,28 @@ const router = useRouter()
 </template>
 
 <style lang="scss" scoped>
-.pic {
-    width: 200px;
-    height: 200px;
-    background-color: skyblue;
-    margin-left: 90px;
-    margin-top: 75px;
-
-    .btn {
-        width: 100%;
-        height: 30px;
-        margin-top: 170px;
-        background-color: black;
-        opacity: 0.5;
-        color: white;
-        display: flex;
-        justify-content: space-around;
-        align-items: center
+    .pic{
+        width: 200px;
+        height: 200px;
+        background: url(../imgs/25.jpg) 100%,100%;
+        margin-left: 90px;
+        margin-top: 75px;
+        .btn{
+            width: 100%;
+            height: 30px;
+            margin-top: 170px;
+            background-color: black;
+            opacity: 0.5;
+            color: white;
+            display: flex;
+            justify-content: space-around;
+            align-items: center
+        }
     }
-}
+    .van-button{
+        margin-top: 20px;
+    }
+
 
 .van-button {
     margin-top: 20px;

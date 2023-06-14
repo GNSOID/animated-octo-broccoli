@@ -1,4 +1,4 @@
-import Mock from 'mockjs'
+import Mock, { mock } from 'mockjs'
 const data = Mock.mock({
     'data|1-10': [{
         'id|+1': 1
@@ -11,3 +11,5 @@ Mock.mock('/gethomelist','post',(config)=>{
     data.data.push(JSON.parse(config.body))
     return data
 })
+
+

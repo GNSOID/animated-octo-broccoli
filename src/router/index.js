@@ -93,13 +93,30 @@ const routes = [
       hidden:true
     },
         component: () => import('../views/sellbook/book5.vue'),
-      },   {
+      }, 
+       {
         path: 'book6',
         name: 'book6',
          meta: {
              hidden:true
            },
         component: () => import('../views/sellbook/book6.vue'),
+      },
+      {
+        path: 'book7',
+        name: 'book7',
+         meta: {
+      hidden:true
+    },
+        component: () => import('../views/sellbook/book7.vue'),
+      },
+      {
+        path: 'address',
+        name: 'address',
+         meta: {
+      hidden:true
+    },
+        component: () => import('../views/sellbook/address.vue'),
       },
     ]
   },

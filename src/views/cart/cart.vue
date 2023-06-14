@@ -8,9 +8,14 @@
     
     <!-- 商品列表 -->
     <div class="content">
-      <div class="lx" @click="$router.push('')">
-        <div class="xx">老笔寨的老猫</div>
-        <div class="rz">学生认证</div>  
+      <div class="lx">
+        <div>
+          <p class="studen">老笔寨的老猫</p>
+        </div>
+        <div>
+          <van-icon name="passed" color="red" class="students" />
+          <p class="student">学生认证</p>
+        </div>
       </div>
     <div class="items">
       <div class="item" v-for="item in Items" :key="item.id">
@@ -28,8 +33,8 @@
     <!-- 底部 -->
       <div class="bottom">
         <van-checkbox v-model="selectAll" @change="changed" class="botto">全选</van-checkbox>
-        <van-button type="warning" class="botton" @click="$router.push('/cart/confirm')" :disabled="!Selected">结算</van-button>
       </div>
+      <van-button type="warning" class="botton" @click="$router.push('/cart/confirm')" :disabled="!Selected">结算</van-button>
     </div>
   </div>
 </template>
@@ -44,16 +49,9 @@ const Selected = computed(() => {//计算属性
 const Items = ref([
   {
     id: 1,
-    name: "你好,钟南山",
-    price: '￥：10',
-    image: "https://img2.xinhuashudian.com/images/2020/05/29/c49edb0a-ff4d-4416-80e9-91b476160247.jpg?x-oss-process=image/resize,m_mfit,h_750,w_750",
-    selected: true,
-  },
-  {
-    id: 2,
-    name: "人类大瘟疫",
-    price: '￥：20',
-    image: "https://img.alicdn.com/bao/uploaded/i4/594774941/O1CN01ahZEH81mN1YgY7GnX_!!0-item_pic.jpg",
+    name: "一只特立独行的猪",
+    price: '￥：16',
+    image: "https://th.bing.com/th/id/R.f4cf65a3dced2048a2e3c081bf60cbde?rik=7lS9481B84zQ6w&riu=http%3a%2f%2fbooklibimg.kfzimg.com%2fdata%2fbook_lib_img_v2%2fisbn%2f0%2f63ce%2f63ce8a81fa99fcc213187fca99df5ddf_0_0_0_0.jpg&ehk=Z5mActsAGkOn20OH3eV%2bbz23xHZGlHR6eCXYsmW%2bvdM%3d&risl=&pid=ImgRaw&r=0",
     selected: false,
   }
 ]);
@@ -104,7 +102,6 @@ const SelectAll = () => { //全选 SelectAll 函数会将 Items 中的每一项 
   border-radius: 20px;
   width: 300px;
   border: 2px;
-  position: absolute;
   top: 0.425rem;
   left: 0.0125rem;
 }
@@ -117,29 +114,26 @@ const SelectAll = () => { //全选 SelectAll 函数会将 Items 中的每一项 
   border-radius: 0px 0px 50px 50px;
   text-align: center;
   line-height: 0.8rem;
-  position: relative;
 }
 .lx{
   display: flex;
   right: 50px;
   top: 50px;
 }
-.xx{
-  font-size: 0.2rem;
-  color: orange;
-  border-radius: 0.5rem;
-  padding: 0.1rem;
-  margin-top: 0.1rem;
-  margin-right: 0.5rem;
+.studen{
+  position:fixed;
+  left: 65px;
+  top: 80px;
 }
-.rz{
-  font-size: 0.2rem;
-  color: orange;
-  border: 1px solid orange;
-  border-radius: 0.5rem;
-  padding: 0.1rem;
-  margin-top: 0.1rem;
-  margin-right: 0.5rem;
+.student{
+  position:fixed;
+  left: 280px;
+  top: 80px;
+}
+.students{
+  position:fixed;
+  left: 260px;
+  top: 100px;
 }
 .bottom {
   bottom: 63px;
@@ -153,32 +147,28 @@ const SelectAll = () => { //全选 SelectAll 函数会将 Items 中的每一项 
 }
 
 .botto {
-  position: fixed;
   bottom: 1px;
-  width: 1rem;
+  width: 0.8rem;
   height: 0.5rem;
-  text-align: right;
   color: white;
   font-size: 0.22rem;
   position: relative;
   left: 20px;
   bottom: 0.03rem;
   float: left;
-  margin-right: 1.7rem;
 }
 
-.botton {
-  position: fixed;
-  bottom: 1px;
-  width: 1rem;
+.van-button {
+  bottom: 62px;
+  width: 1.1rem;
   height: 0.5rem;
   background-color: orange;
   text-align: right;
   color: white;
   font-size: 0.22rem;
   border-radius: 0.5rem;
-  position: relative;
-  right: 20px;
+  position: absolute;
+  left: 70%;
 }
 
 .items {

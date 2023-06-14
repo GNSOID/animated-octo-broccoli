@@ -1,13 +1,23 @@
 <script setup lang="ts">
 import { ref,computed } from 'vue'
+import { setRegister } from '../../api/register'
 import { useRouter} from 'vue-router'
 const router = useRouter()
-const phoneNum: any = ref('')
-const btnShow = computed(() =>{
+
+// setRegister().then(res => {
+//   console.log(res.data);
   
+// })
+
+const phoneNum = ref('')
+const btnShow = computed(() =>{
   return !/^(?:(?:\+|00)86)?1\d{10}$/.test(phoneNum.value)
   
 }) 
+ function last() {
+  router.push('step2')
+  window.localStorage.setItem('phone',phoneNum.value)
+ }
 </script>
 
 <template>
@@ -16,7 +26,7 @@ const btnShow = computed(() =>{
     <header class="header">注册</header>
 <div class="content">
 
-    <van-form @submit="onSubmit">
+    <van-form >
   <van-cell-group inset>
     <van-field
       v-model="phoneNum"
@@ -29,7 +39,7 @@ const btnShow = computed(() =>{
   <!-- 下一步 -->
   <div style="margin: 16px;">
     <van-button 
-    @click="$router.push('step2')"
+    @click="last"
     round block 
     type="primary" 
     native-type="submit"

@@ -24,7 +24,7 @@ const router = useRouter()
     </header>
 
     <div class="content">
-      <van-icon name="chat-o" dot size="45px" color="white" id="van-badge" />
+      <van-icon name="chat-o" dot size="45px" color="white" id="van-badge" @click="$router.push('/bigkind/message')"/>
       
     <div class="lc">
       <h3>1.填写详细信息</h3> 

@@ -34,10 +34,12 @@ const rules = {
     <!-- 头部 -->
     <header class="header">您好</header>
     <!-- 表单 -->
-    <van-form @submit="onSubmit" >
+    <van-form @submit="onSubmit">
       <van-cell-group inset>
-        <van-field v-model="username" placeholder="手机号" :rules="rules.username" class="input-field"  style="position: absolute; top: 1.2rem; left: 0.4rem; width: 2.8rem;"/>
-        <van-field v-model="password" type="password" placeholder="密码" :rules="rules.password" class="input-field"  style="position: absolute; top: 2rem; left: 0.4rem; width: 2.8rem;"/>
+        <van-field v-model="username" placeholder="手机号" :rules="rules.username" class="input-field"
+          style="position: absolute; top: 1.2rem; left: 0.4rem; width: 2.8rem;" />
+        <van-field v-model="password" type="password" placeholder="密码" :rules="rules.password" class="input-field"
+          style="position: absolute; top: 2rem; left: 0.4rem; width: 2.8rem;" />
       </van-cell-group>
       <div class="btn1">
         <van-button round block type="success" native-type="submit">
@@ -53,18 +55,19 @@ const rules = {
 </template>
 
 <style scoped>
-.box{
+.box {
   width: 100%;
   height: 100%;
   background-color: #ebebe6;
   position: absolute;
 }
+
 .header {
   width: 100%;
   height: 0.44rem;
   line-height: 0.44rem;
   color: black;
-  font-size: 30px;
+  font-size: 30px; 
   font-weight: 600;
   position: relative;
   top: 50px;
@@ -78,9 +81,9 @@ const rules = {
   padding: 8px;
   margin-bottom: 12px;
 }
+
 .btn1 {
   margin-top: 2.5rem;
   margin-left: 0.3rem;
   width: 3rem;
-}
-</style>
+}</style>

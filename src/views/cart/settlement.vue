@@ -1,11 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted, computed, watch } from "vue";
-import { useRouter } from 'vue-router'
+import { ref } from "vue";
 const value1 = ref("");
-const router = useRouter()
-const onSubmit = () => {
-  router.push('/home')
-}
 </script>
 
 
@@ -13,8 +8,8 @@ const onSubmit = () => {
     <div class="content">
         <h1>支付成功</h1>
         <van-icon name="checked" color="green" size="3rem"/>
-        <van-button style="width: 65%; margin-top: 60px" type="warning" @click="$router.push('/kind/index')">前往个人页</van-button>
-        <van-button style="width: 65%; margin-top: 20px;" type="warning" @click="$router.push('/home/index')">返回首页</van-button>
+        <van-button style="width: 65%; margin-top: 60px" type="warning" @click="$router.push('/my/mybuy')">前往个人页</van-button>
+        <van-button style="width: 65%; margin-top: 20px;" type="warning" @click="$router.push('/home')">返回首页</van-button>
     </div>
    
 </template>
