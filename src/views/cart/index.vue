@@ -1,9 +1,10 @@
 <script setup lang="ts">
-
+import { RouterView} from 'vue-router'
 </script>
 
+
 <template>
-  <div class="box">
-    <header class="header">购物车</header>
-  </div>
+   
+   <RouterView/>
+
 </template>

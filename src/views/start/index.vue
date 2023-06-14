@@ -15,7 +15,7 @@ const onSubmit = () => {
 <template>
     
     <div class="box">
-        <div style="position: relative; top: 1rem; left: 0.8rem;"><img src="../../images/4830/48304213/v2_qa2h05.png" alt=""></div>
+        <div style="position: relative; top: 1rem; left: 0.8rem;"><img src="../imgs/v2_qa2h05.png" alt=""></div>
         <h1 style="color: aliceblue; font-size: 1rem; position: absolute; top: 2.8rem; left: 0.8rem;">自家书库</h1>
         <van-button type="warning" style="width: 2rem; position: relative; top: 5rem; left: 0.9rem; border-radius: 0.5rem;"
             @click="$router.push('/login')">开始</van-button>
@@ -48,6 +48,6 @@ const onSubmit = () => {
 }
 
 .box {
-    background-image: url(../../images/4828/48280107/v2_qa1yhb.jpg);
+    background-image: url(../imgs/v2_qa1yhb.jpg);
     background-size: 100% 100%;
 }</style>

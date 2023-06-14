@@ -1,12 +1,9 @@
 <script setup lang="ts">
 
- 
+import { RouterLink, RouterView } from 'vue-router'
+
 </script>
 
 <template>
-   <div class="box">
-     <header class="header">主页</header>
-    </div>
+  <RouterView />
 </template>
-<style lang="scss" scoped>
-</style>

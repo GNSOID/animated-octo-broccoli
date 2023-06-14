@@ -2,15 +2,18 @@
 import { ref, onMounted } from "vue";
 import type { Ref } from "vue";
 import { getHomeList } from "@/api/homeList";
-
+const homeList = ref([]);
 const value1 = ref("");
-// onMounted(() => {
-//   // getHomeList().then((res) => {
-//   //   console.log(res.data);
-//   // });
-// });
-</script>
+const loading = ref("");
 
+
+onMounted(() => {
+  getHomeList().then((res) => {
+    // console.log(res.data.data);
+    homeList.value = res.data.data;
+  });
+});
+</script>
 <template>
   <div class="box">
     <header class="headers">
@@ -28,7 +31,14 @@ const value1 = ref("");
       </div>
     </header>
     <div class="content">
-      <van-icon name="chat-o" dot size="45px" color="white" id="van-badge" />
+      <van-icon
+        name="chat-o"
+        dot
+        size="45px"
+        color="white"
+        id="van-badge"
+        @click="$router.push('/bigkind/message')"
+      ></van-icon>
 
       <!-- 轮播图 -->
       <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white">
@@ -43,30 +53,31 @@ const value1 = ref("");
         <van-icon size="60px" color="orange" name="hot-sale"></van-icon>
         <van-icon size="60px" color="orange" name="new-arrival"></van-icon>
         <van-icon size="60px" color="orange" name="map-marked"></van-icon>
-        <van-icon size="60px" color="orange" name="bars"></van-icon>
+        <van-icon
+          @click="$router.push('/bigkind/kind')"
+          size="60px"
+          color="orange"
+          name="bars"
+        ></van-icon>
       </div>
-      <div class="bookList">
+      <div @click="$router.push('/bigkind/onsale')" class="bookList">
         <p>书单推荐</p>
         <img src="../imgs/34.jpeg" alt="" />
       </div>
       <div class="middle">
         <div class="nearSale">
           <p>附近在售</p>
+          <img src="../imgs/29.jpg" alt="" style="width: 100%; height: 50px;">
         </div>
-        <div class="hotSearch">
+        <div @click="$router.push('/bigkind/search')" class="hotSearch">
           <p>热搜榜单</p>
+          <img src="../imgs/28.jpg" alt="" style="width: 100%; height: 50px;">
         </div>
       </div>
       <h3>猜你喜欢</h3>
-      <van-list
-        v-model:loading="loading"
-        :finished="finished"
-        finished-text="没有更多了"
-        @load="onLoad"
-      >
-        <van-cell v-for="item in 4" :key="item" :title="item" />
-      </van-list>
-      <van-back-top right="5vw" bottom="18vh" />
+      <van-grid :column-num="2">
+        <van-grid-item v-for="value in homeList" :key="value" :icon="value.img" :text="value.name" />
+      </van-grid>
     </div>
   </div>
 </template>
